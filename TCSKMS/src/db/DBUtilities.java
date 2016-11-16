@@ -10,7 +10,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import java.sql.Statement;
 
 /**
  *
@@ -31,21 +31,4 @@ public class DBUtilities extends Config{
         
         return conn;
     }
-    
-    //login browse
-    public ResultSet browse(PreparedStatement pStmt){
-        ResultSet rs;
-        rs = null;
-        
-        try{
-            rs=pStmt.executeQuery();
-        }catch(SQLException e){
-            System.out.println(e.getMessage());
-        }
-        return rs;
-    
-    }
-    
-   
-    
 }
