@@ -5,6 +5,8 @@
  */
 package nondish;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,73 +14,55 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import jdk.nashorn.internal.codegen.CompilerConstants;
 
+
 /**
  *
  * @author Carlo
  */
-
 public class EditNonDish extends javax.swing.JFrame {
 
     /**
      * Creates new form ViewNonDishUI
      */
+
     public EditNonDish() {
         initComponents();
     }
-    boolean checkQtyFormat = false;
-    boolean checkFields = false;
-    boolean checkPriceFormat = false;
+    int qty;
+    float price;
     
     public void setFields(){
         DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
         Date current = new Date();
-        date.setText(dateFormat.format(current));
+        txtfldDate.setText(dateFormat.format(current));
     }
     public void setNonDishID(int i){
-        nonDishID.setText(i+"");
+        txtfldCode.setText(i+"");
     }
     public void setNonDishName(String ndName){
-        nonDishName.setText(ndName+"");
+        txtfldNDName.setText(ndName+"");
     }
     public void setBrandName(String brand){
-        brandName.setText(brand+"");
+        txtfldBrand.setText(brand+"");
     }
     public void setSupplier(String supp){
-        supplier.setText(supp+"");
+        txtfldSupplier.setText(supp+"");
     }
     public void setDateEdited(String dateEdit){
-        date.setText(dateEdit+"");
+        txtfldDate.setText(dateEdit+"");
     }
     public void setQty(int ndQuantity){
-        qty.setText(ndQuantity+"");
+        txtfldQty.setText(ndQuantity+"");
     }
     public void setPrice(float ndPrice){
-        price.setText(ndPrice+"");
+        txtfldPrice.setText(ndPrice+"");
     }
     
-    public static boolean isInteger(String checkQtyFormat) {
-        boolean bool = true;
-        try { 
-            Integer.parseInt(checkQtyFormat); 
-        }catch(NumberFormatException e) { 
-            JOptionPane.showMessageDialog(null, "Wrong Quantity Format! Please fill up with whole number.");  
-            bool = false;
-        }
-    // if exception isn't thrown, then it is an integer
-        return bool;
+    public void setCenterScreen(){
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
     }
     
-    public static boolean isFloat(String checkPriceFormat) {
-        boolean bool = true;
-        try { 
-            Float.parseFloat(checkPriceFormat); 
-        }catch(NumberFormatException e) { 
-            JOptionPane.showMessageDialog(null, "Wrong Price Format! Please input actual price.");  
-            bool = false;
-        }
-    // if exception isn't thrown, then it is an integer
-        return bool;
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -88,114 +72,109 @@ public class EditNonDish extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        nonDishID = new javax.swing.JTextField();
-        date = new javax.swing.JTextField();
-        nonDishName = new javax.swing.JTextField();
-        brandName = new javax.swing.JTextField();
-        qty = new javax.swing.JTextField();
-        price = new javax.swing.JTextField();
-        supplier = new javax.swing.JTextField();
+        pnlBody = new javax.swing.JPanel();
+        lblNdName = new javax.swing.JLabel();
         lblCode = new javax.swing.JLabel();
         lblDate = new javax.swing.JLabel();
-        lblName = new javax.swing.JLabel();
         lblBrand = new javax.swing.JLabel();
         lblQty = new javax.swing.JLabel();
         lblPrice = new javax.swing.JLabel();
         lblSupplier = new javax.swing.JLabel();
-        lblReqFields = new javax.swing.JLabel();
-        editBtn = new javax.swing.JButton();
-        cancelBtn = new javax.swing.JButton();
-        deleteBtn = new javax.swing.JButton();
+        txtfldDate = new javax.swing.JTextField();
+        txtfldCode = new javax.swing.JTextField();
+        txtfldBrand = new javax.swing.JTextField();
+        txtfldNDName = new javax.swing.JTextField();
+        txtfldQty = new javax.swing.JTextField();
+        txtfldPrice = new javax.swing.JTextField();
+        txtfldSupplier = new javax.swing.JTextField();
+        btnEdit = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
+        lblQremarks = new javax.swing.JLabel();
+        lblPremarks = new javax.swing.JLabel();
         pnlHeader = new javax.swing.JPanel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        lblHeader = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jLayeredPane5 = new javax.swing.JLayeredPane();
+        lblCopyright = new javax.swing.JLabel();
+        lblReq = new javax.swing.JLabel();
+        lblReq1 = new javax.swing.JLabel();
+        lblReq3 = new javax.swing.JLabel();
+        lblReq4 = new javax.swing.JLabel();
+        lblReq5 = new javax.swing.JLabel();
+        btnDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(581, 411));
+        setPreferredSize(new java.awt.Dimension(677, 721));
+        setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        pnlBody.setBackground(new java.awt.Color(255, 255, 255));
 
-        nonDishID.setEditable(false);
+        lblNdName.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblNdName.setText("Non-Dish Name:");
 
-        date.setEditable(false);
+        lblCode.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblCode.setText("Non-Dish Code:");
 
-        nonDishName.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                nonDishNameKeyTyped(evt);
-            }
-        });
+        lblDate.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblDate.setText("Date Edited:");
 
-        brandName.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                brandNameKeyTyped(evt);
-            }
-        });
+        lblBrand.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblBrand.setText("Brand Name:");
 
-        qty.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                qtyKeyTyped(evt);
-            }
-        });
+        lblQty.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblQty.setText("Quantity:");
 
-        supplier.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                supplierKeyTyped(evt);
-            }
-        });
+        lblPrice.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblPrice.setText("Price:");
 
-        lblCode.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        lblCode.setText("Non-Dish Code");
+        lblSupplier.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblSupplier.setText("Supplier:");
 
-        lblDate.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        lblDate.setText("Date Edited");
+        txtfldDate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtfldDate.setEnabled(false);
 
-        lblName.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        lblName.setText("*Non-Dish Name");
+        txtfldCode.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtfldCode.setEnabled(false);
 
-        lblBrand.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        lblBrand.setText("*Brand Name");
+        txtfldBrand.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        lblQty.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        lblQty.setText("*Quantity");
+        txtfldNDName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        lblPrice.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        lblPrice.setText("*Price");
+        txtfldQty.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        lblSupplier.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        lblSupplier.setText("*Supplier");
+        txtfldPrice.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        lblReqFields.setText("Required fields are marked with *");
+        txtfldSupplier.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        editBtn.setBackground(new java.awt.Color(255, 255, 255));
-        editBtn.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
-        editBtn.setForeground(new java.awt.Color(255, 153, 0));
-        editBtn.setText("EDIT");
-        editBtn.addActionListener(new java.awt.event.ActionListener() {
+        btnEdit.setBackground(new java.awt.Color(209, 102, 23));
+        btnEdit.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnEdit.setForeground(new java.awt.Color(255, 255, 255));
+        btnEdit.setText("EDIT");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editBtnActionPerformed(evt);
+                btnEditActionPerformed(evt);
             }
         });
 
-        cancelBtn.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
-        cancelBtn.setText("BACK");
-        cancelBtn.addActionListener(new java.awt.event.ActionListener() {
+        btnCancel.setBackground(new java.awt.Color(255, 255, 255));
+        btnCancel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnCancel.setText("CANCEL");
+        btnCancel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(209, 102, 23), 2));
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelBtnActionPerformed(evt);
+                btnCancelActionPerformed(evt);
             }
         });
 
-        deleteBtn.setBackground(new java.awt.Color(255, 153, 0));
-        deleteBtn.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
-        deleteBtn.setForeground(new java.awt.Color(255, 255, 255));
-        deleteBtn.setText("DELETE");
-        deleteBtn.setMaximumSize(new java.awt.Dimension(95, 29));
-        deleteBtn.setMinimumSize(new java.awt.Dimension(95, 29));
-        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteBtnActionPerformed(evt);
-            }
-        });
+        lblQremarks.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblQremarks.setForeground(new java.awt.Color(255, 0, 0));
+        lblQremarks.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+
+        lblPremarks.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblPremarks.setForeground(new java.awt.Color(255, 0, 0));
+        lblPremarks.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
         pnlHeader.setBackground(new java.awt.Color(209, 102, 23));
 
@@ -210,9 +189,9 @@ public class EditNonDish extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        lblHeader.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        lblHeader.setForeground(new java.awt.Color(255, 255, 255));
-        lblHeader.setText("Edit Non-Dish");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("UPDATE NON-DISH");
 
         javax.swing.GroupLayout pnlHeaderLayout = new javax.swing.GroupLayout(pnlHeader);
         pnlHeader.setLayout(pnlHeaderLayout);
@@ -224,213 +203,301 @@ public class EditNonDish extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlHeaderLayout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(lblHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(37, 37, 37)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlHeaderLayout.setVerticalGroup(
             pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlHeaderLayout.createSequentialGroup()
-                .addComponent(lblHeader)
-                .addGap(37, 37, 37)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
                 .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(65, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblReqFields)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblName, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lblCode))
-                                    .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblBrand, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblQty, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(32, 32, 32)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(date, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
-                                    .addComponent(nonDishID)
-                                    .addComponent(nonDishName)
-                                    .addComponent(brandName, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(qty, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(price)
-                                    .addComponent(supplier, javax.swing.GroupLayout.Alignment.LEADING))))
-                        .addGap(82, 82, 82))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(editBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(76, 76, 76))))
-            .addComponent(pnlHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pics/header.jpg"))); // NOI18N
+
+        jPanel5.setBackground(new java.awt.Color(209, 102, 23));
+
+        javax.swing.GroupLayout jLayeredPane5Layout = new javax.swing.GroupLayout(jLayeredPane5);
+        jLayeredPane5.setLayout(jLayeredPane5Layout);
+        jLayeredPane5Layout.setHorizontalGroup(
+            jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jLayeredPane5Layout.setVerticalGroup(
+            jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        lblCopyright.setBackground(new java.awt.Color(204, 204, 204));
+        lblCopyright.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblCopyright.setForeground(new java.awt.Color(255, 255, 255));
+        lblCopyright.setText("ABIBA ©2016. All Rights Reserved.");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLayeredPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblCopyright)
+                .addGap(220, 220, 220))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(lblCopyright, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addComponent(jLayeredPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        lblReq.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblReq.setForeground(new java.awt.Color(255, 51, 0));
+        lblReq.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblReq.setText("*");
+        lblReq.setAlignmentY(1.0F);
+
+        lblReq1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblReq1.setForeground(new java.awt.Color(255, 51, 0));
+        lblReq1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblReq1.setText("*");
+
+        lblReq3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblReq3.setForeground(new java.awt.Color(255, 51, 0));
+        lblReq3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblReq3.setText("*");
+        lblReq3.setAlignmentY(1.0F);
+
+        lblReq4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblReq4.setForeground(new java.awt.Color(255, 51, 0));
+        lblReq4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblReq4.setText("*");
+        lblReq4.setAlignmentY(1.0F);
+
+        lblReq5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblReq5.setForeground(new java.awt.Color(255, 51, 0));
+        lblReq5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblReq5.setText("*");
+        lblReq5.setAlignmentY(1.0F);
+
+        btnDelete.setBackground(new java.awt.Color(204, 0, 0));
+        btnDelete.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
+        btnDelete.setText("DELETE");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlBodyLayout = new javax.swing.GroupLayout(pnlBody);
+        pnlBody.setLayout(pnlBodyLayout);
+        pnlBodyLayout.setHorizontalGroup(
+            pnlBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnlBodyLayout.createSequentialGroup()
+                .addComponent(jLabel2)
+                .addGap(0, 101, Short.MAX_VALUE))
+            .addGroup(pnlBodyLayout.createSequentialGroup()
+                .addGroup(pnlBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlBodyLayout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addGroup(pnlBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblReq, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblReq1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblReq3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblReq4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblReq5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtfldQty, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblBrand, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCode, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblDate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblNdName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlBodyLayout.createSequentialGroup()
+                                .addComponent(lblPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblPremarks, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblSupplier, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlBodyLayout.createSequentialGroup()
+                                .addComponent(lblQty, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblQremarks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txtfldBrand, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtfldNDName, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtfldDate, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtfldCode, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtfldPrice, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtfldSupplier, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addGroup(pnlBodyLayout.createSequentialGroup()
+                        .addGap(137, 137, 137)
+                        .addComponent(btnDelete)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlBodyLayout.setVerticalGroup(
+            pnlBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlBodyLayout.createSequentialGroup()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nonDishID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCode))
+                .addGap(29, 29, 29)
+                .addComponent(lblCode)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDate))
+                .addComponent(txtfldCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nonDishName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblName))
+                .addComponent(lblDate)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(brandName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblBrand))
+                .addComponent(txtfldDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(qty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblQty))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPrice))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(supplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSupplier))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblReqFields)
+                .addGroup(pnlBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNdName)
+                    .addComponent(lblReq1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(editBtn)
-                    .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cancelBtn))
-                .addGap(0, 38, Short.MAX_VALUE))
+                .addComponent(txtfldNDName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblBrand)
+                    .addComponent(lblReq))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtfldBrand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblQty)
+                        .addComponent(lblReq3))
+                    .addComponent(lblQremarks, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtfldQty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(pnlBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblPrice)
+                        .addComponent(lblReq4))
+                    .addComponent(lblPremarks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtfldPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSupplier)
+                    .addComponent(lblReq5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtfldSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(pnlBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnCancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnlBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlBody, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlBody, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
-        int dialogUpdate = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this item?", 
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        int dialogUpdate = JOptionPane.showConfirmDialog(null, "Are you sure you want to update this item?",
                 "CONFIRMING", JOptionPane.YES_NO_OPTION);
+        
         if(dialogUpdate == JOptionPane.YES_OPTION){
-            NonDishModel nd = new NonDishModel();
-            nd.setNonDishID(Integer.parseInt(nonDishID.getText()));
-            nd.setStatus("DELETED");
-            int rs = nd.deleteNonDish();
-            if(1 == rs){
-                JOptionPane.showMessageDialog(null, "You have successfully deleted an item.", 
-                        "Non-Dish Item Deleted", JOptionPane.INFORMATION_MESSAGE);
-                NonDishList ndList = new NonDishList();
-                ndList.loadNonDishToJTable();
-                ndList.setVisible(true);
-                this.dispose();
-            }
-        }
-    }//GEN-LAST:event_deleteBtnActionPerformed
-
-    private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
-        if(nonDishName.getText().isEmpty() || brandName.getText().isEmpty() || qty.getText().isEmpty()
-                || price.getText().isEmpty() || supplier.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Empty fields detected! Please fill up all fields");
-        }else{
-            checkFields = true;
-        }
-        if(checkQtyFormat != true){
-            checkQtyFormat = isInteger(qty.getText());
-        }
-        if(checkPriceFormat != true){
-            checkPriceFormat = isFloat(price.getText());
-        }
-        if(checkQtyFormat == true && checkFields == true && checkPriceFormat == true){
-            int dialogUpdate = JOptionPane.showConfirmDialog(null, "Are you sure you want to update this item?", 
-                "CONFIRMING", JOptionPane.YES_NO_OPTION);
-            if(dialogUpdate == JOptionPane.YES_OPTION){
+            if(txtfldNDName.getText().isEmpty() || txtfldBrand.getText().isEmpty() || txtfldQty.getText().isEmpty()
+                || txtfldPrice.getText().isEmpty() || txtfldSupplier.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Empty fields detected! Please fill up all fields");
+            }else{
+                try {
+                    qty = Integer.parseInt(txtfldQty.getText());
+                }catch (NumberFormatException e) {
+                    lblQremarks.setText("Value entered not a number!");
+                }try {
+                    price = Float.parseFloat(txtfldPrice.getText());
+                }catch (NumberFormatException e) {
+                    lblPremarks.setText("Value entered not a number!");
+                }
+                
                 NonDishModel nd = new NonDishModel();
-                nd.setNonDishID(Integer.parseInt(nonDishID.getText()));
-                nd.setNonDishName(nonDishName.getText());
-                nd.setBrandName(brandName.getText());
-                nd.setSupplier(supplier.getText());
-            
+                nd.setNonDishID(Integer.parseInt(txtfldCode.getText()));
+                nd.setNonDishName(txtfldNDName.getText());
+                nd.setBrandName(txtfldBrand.getText());
+                nd.setSupplier(txtfldSupplier.getText());
+
                 DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
                 Date current = new Date();
                 String currDate = dateFormat.format(current);
-            
+
                 nd.setDateEdited(currDate);
-                nd.setQty(Integer.parseInt(qty.getText()));
-                nd.setPrice(Float.parseFloat(price.getText()));
+                nd.setQty(Integer.parseInt(txtfldQty.getText()));
+                nd.setPrice(Float.parseFloat(txtfldPrice.getText()));
                 nd.setStatus("OK");
-            
+
                 int rs = nd.updateNonDish();
                 if(1 == rs){
-                    JOptionPane.showMessageDialog(null, "You have successfully updated an item.", 
+                    JOptionPane.showMessageDialog(null, "You have successfully updated an item.",
                         "Non-Dish Item Updated", JOptionPane.INFORMATION_MESSAGE);
                     NonDishList ndList = new NonDishList();
                     ndList.loadNonDishToJTable();
                     ndList.setVisible(true);
+                    ndList.setCenterScreen();
                     this.dispose();
                 }
             }
         }
-    }//GEN-LAST:event_editBtnActionPerformed
+    }//GEN-LAST:event_btnEditActionPerformed
 
-    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         NonDishList ndlist = new NonDishList();
         ndlist.loadNonDishToJTable();
+        ndlist.setCenterScreen();
         ndlist.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_cancelBtnActionPerformed
+    }//GEN-LAST:event_btnCancelActionPerformed
 
-    private void nonDishNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nonDishNameKeyTyped
-        if(nonDishName.getText().length() >= 50){
-            evt.consume();
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        int dialogUpdate = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this item?",
+            "CONFIRMING", JOptionPane.YES_NO_OPTION);
+        if(dialogUpdate == JOptionPane.YES_OPTION){
+            NonDishModel nd = new NonDishModel();
+            nd.setNonDishID(Integer.parseInt(txtfldCode.getText()));
+            nd.setStatus("DELETED");
+            int rs = nd.deleteNonDish();
+            if(1 == rs){
+                JOptionPane.showMessageDialog(null, "You have successfully deleted an item.",
+                    "Non-Dish Item Deleted", JOptionPane.INFORMATION_MESSAGE);
+                NonDishList ndList = new NonDishList();
+                ndList.loadNonDishToJTable();
+                ndList.setVisible(true);
+                ndList.setCenterScreen();
+                this.dispose();
+            }
         }
-    }//GEN-LAST:event_nonDishNameKeyTyped
-
-    private void brandNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_brandNameKeyTyped
-        if(brandName.getText().length() >= 50){
-            evt.consume();
-        }
-    }//GEN-LAST:event_brandNameKeyTyped
-
-    private void qtyKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_qtyKeyTyped
-        if(qty.getText().length() >= 11){
-            evt.consume();
-        }
-    }//GEN-LAST:event_qtyKeyTyped
-
-    private void supplierKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_supplierKeyTyped
-        if(supplier.getText().length() >= 50){
-            evt.consume();
-        }
-    }//GEN-LAST:event_supplierKeyTyped
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -460,33 +527,60 @@ public class EditNonDish extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new EditNonDish().setVisible(true);
+                
             }
         });
         
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField brandName;
-    private javax.swing.JButton cancelBtn;
-    private javax.swing.JTextField date;
-    private javax.swing.JButton deleteBtn;
-    private javax.swing.JButton editBtn;
+    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnCancel;
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnEdit;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLayeredPane jLayeredPane1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLayeredPane jLayeredPane5;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JLabel lblBrand;
+    private javax.swing.JLabel lblBrand3;
     private javax.swing.JLabel lblCode;
+    private javax.swing.JLabel lblCode3;
+    private javax.swing.JLabel lblCopyright;
     private javax.swing.JLabel lblDate;
-    private javax.swing.JLabel lblHeader;
-    private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblDate3;
+    private javax.swing.JLabel lblNdName;
+    private javax.swing.JLabel lblNdName3;
+    private javax.swing.JLabel lblPremarks;
     private javax.swing.JLabel lblPrice;
+    private javax.swing.JLabel lblPrice3;
+    private javax.swing.JLabel lblQremarks;
     private javax.swing.JLabel lblQty;
-    private javax.swing.JLabel lblReqFields;
+    private javax.swing.JLabel lblQty3;
+    private javax.swing.JLabel lblReq;
+    private javax.swing.JLabel lblReq1;
+    private javax.swing.JLabel lblReq3;
+    private javax.swing.JLabel lblReq4;
+    private javax.swing.JLabel lblReq5;
     private javax.swing.JLabel lblSupplier;
-    private javax.swing.JTextField nonDishID;
-    private javax.swing.JTextField nonDishName;
+    private javax.swing.JLabel lblSupplier3;
+    private javax.swing.JPanel pnlBody;
+    private javax.swing.JPanel pnlBody3;
     private javax.swing.JPanel pnlHeader;
-    private javax.swing.JTextField price;
-    private javax.swing.JTextField qty;
-    private javax.swing.JTextField supplier;
+    private javax.swing.JTextField txtfldBrand;
+    private javax.swing.JTextField txtfldBrand3;
+    private javax.swing.JTextField txtfldCode;
+    private javax.swing.JTextField txtfldCode3;
+    private javax.swing.JTextField txtfldDate;
+    private javax.swing.JTextField txtfldDate3;
+    private javax.swing.JTextField txtfldNDName;
+    private javax.swing.JTextField txtfldNDName3;
+    private javax.swing.JTextField txtfldPrice;
+    private javax.swing.JTextField txtfldPrice3;
+    private javax.swing.JTextField txtfldQty;
+    private javax.swing.JTextField txtfldQty3;
+    private javax.swing.JTextField txtfldSupplier;
+    private javax.swing.JTextField txtfldSupplier3;
     // End of variables declaration//GEN-END:variables
 }

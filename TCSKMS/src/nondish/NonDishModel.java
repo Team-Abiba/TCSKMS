@@ -77,6 +77,7 @@ public class NonDishModel {
     public void setStatus(String ndStatus){
         status = ndStatus;
     }
+    
     //adds a new non dish item and its details  
     public int addNonDish(){
         int affectedRows = 0;
@@ -208,4 +209,35 @@ public class NonDishModel {
         }
         return affectedRows;
     }  
+    
+    public int checkDuplicate(){
+        int returnedRow = 0;
+        boolean rsCheck;
+        ResultSet rs;
+        try{
+            dbu = new DBUtilities();
+            conn = dbu.connectToMySQL();
+            System.out.println("DB Connected.");
+            String query;
+            query = "select * from nondish where nondish_name=? and supplier=? and status=?";
+            
+            PreparedStatement checkPrep = conn.prepareStatement(query);
+            checkPrep.setString(1, nonDishName);
+            checkPrep.setString(2, supplier);
+            checkPrep.setString(3, "OK");
+            
+            rs = checkPrep.executeQuery();
+            rsCheck = rs.next();
+            
+            if(rsCheck == true){
+                returnedRow = 1;
+            }else{
+                returnedRow = 0;
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+            System.out.println(e.getMessage());
+        }
+        return returnedRow;
+    }
 }
