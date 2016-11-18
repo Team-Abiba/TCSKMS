@@ -13,6 +13,7 @@ import static java.lang.System.out;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import nondish.NonDishList;
 import user.UserList;
 
 /**
@@ -221,6 +222,11 @@ public class KSHomepage extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(209, 102, 23), 3, true), "NAVIGATION", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
         lblNondish.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pics/NDL.png"))); // NOI18N
+        lblNondish.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblNondishMouseClicked(evt);
+            }
+        });
 
         lblIngredients.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pics/ingL.png"))); // NOI18N
         lblIngredients.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -292,7 +298,7 @@ public class KSHomepage extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(lblLogout)
                 .addGap(21, 21, 21)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 43, Short.MAX_VALUE))
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 56, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(124, 124, 124)
@@ -331,6 +337,14 @@ public class KSHomepage extends javax.swing.JFrame {
         dbu = new DBUtilities();
         dbu.setUserID(0);
     }//GEN-LAST:event_lblLogoutMouseClicked
+
+    private void lblNondishMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNondishMouseClicked
+        NonDishList NList = new NonDishList();
+        NList.loadNonDishToJTable();
+        NList.setCenterScreen();
+        NList.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_lblNondishMouseClicked
 
     /**
      * @param args the command line arguments

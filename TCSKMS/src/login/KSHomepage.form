@@ -161,7 +161,7 @@
                   <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                   <Component id="lblLogout" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                  <Component id="jPanel5" pref="43" max="32767" attributes="0"/>
+                  <Component id="jPanel5" pref="56" max="32767" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
@@ -372,6 +372,9 @@
                   <Image iconType="3" name="/pics/NDL.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblNondishMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblIngredients">
               <Properties>

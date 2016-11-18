@@ -406,6 +406,9 @@
                   <Image iconType="3" name="/pics/NDL.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblNondishMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblIngredients">
               <Properties>

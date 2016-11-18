@@ -13,6 +13,7 @@ import static java.lang.System.out;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import nondish.NonDishList;
 import user.UserList;
 
 /**
@@ -236,6 +237,11 @@ public class AdminHomepage extends javax.swing.JFrame {
         });
 
         lblNondish.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pics/NDL.png"))); // NOI18N
+        lblNondish.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblNondishMouseClicked(evt);
+            }
+        });
 
         lblIngredients.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pics/ingL.png"))); // NOI18N
         lblIngredients.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -379,6 +385,14 @@ public class AdminHomepage extends javax.swing.JFrame {
         dbu = new DBUtilities();
         dbu.setUserID(0);
     }//GEN-LAST:event_lblLogoutMouseClicked
+
+    private void lblNondishMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNondishMouseClicked
+        NonDishList NList = new NonDishList();
+        NList.loadNonDishToJTable();
+        NList.setCenterScreen();
+        NList.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_lblNondishMouseClicked
 
     /**
      * @param args the command line arguments
