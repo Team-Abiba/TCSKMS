@@ -6,6 +6,7 @@
 package nondish;
 
 import com.ezware.oxbow.swingbits.table.filter.TableRowFilterSupport;
+import db.DBUtilities;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -18,6 +19,8 @@ import javax.swing.JTable;
 import javax.swing.RowFilter;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableRowSorter;
+import login.AdminHomepage;
+import login.KSHomepage;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -296,7 +299,7 @@ public class NonDishList extends javax.swing.JFrame {
             obj = this.getTable().getValueAt(row,0);
             int id = (int)obj;
             NonDishModel nd = new NonDishModel();
-            EditNonDish editND = new EditNonDish();
+            NonDishEdit editND = new NonDishEdit();
 
             nd.setNonDishID(id);
             nd.loadOneNonDish();
@@ -324,11 +327,32 @@ public class NonDishList extends javax.swing.JFrame {
     }//GEN-LAST:event_tblNonDishMousePressed
 
     private void lblHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomeMouseClicked
+        String type;
+        DBUtilities dbu;
         
+        dbu = new DBUtilities();
+        type = dbu.getType();
+        if(type.equals("Admin")){
+            AdminHomepage h = new AdminHomepage ();
+            dbu.setType(type);
+            h.setVisible(true);
+            h.setCenterScreen();
+            h.setName();
+            this.dispose();
+        }else if(type.equals("Kitchen Staff")){
+            dbu.setType(type);
+            KSHomepage h = new KSHomepage ();
+            h.setVisible(true);
+            h.setCenterScreen();
+            h.setName();
+            this.dispose();
+        }else{
+
+        }
     }//GEN-LAST:event_lblHomeMouseClicked
 
     private void lblAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAddMouseClicked
-        AddNonDish addND = new AddNonDish();
+        NonDishAdd addND = new NonDishAdd();
         addND.setFields();
         addND.setCenterScreen();
         addND.setVisible(true);

@@ -39,23 +39,7 @@ public class Login extends javax.swing.JFrame {
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
     }
     
-      
-
-    private static void checkIfRunning() {
-      try {
-        //Bind to localhost adapter with a zero connection queue 
-        socket = new ServerSocket(PORT,0,InetAddress.getByAddress(new byte[] {127,0,0,1}));
-      }
-      catch (BindException e) {
-        System.err.println("Already running.");
-        System.exit(1);
-      }
-      catch (IOException e) {
-        System.err.println("Unexpected error.");
-        e.printStackTrace();
-        System.exit(2);
-      }
-    }
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -271,12 +255,14 @@ public class Login extends javax.swing.JFrame {
                     p = rs.getString("password");
                     u = rs.getString("username");
                     stat=rs.getString("status");
+                    dbu.setUserID(rs.getInt("user_id"));
                 }
 
                 if(pass.equals(p) && user.equals(u) && "OK".equals(stat)){
                     AdminHomepage h = new AdminHomepage ();
                     h.setVisible(true);
                     h.setCenterScreen();
+                    h.setName();
                     this.dispose();
                 }else if(pass.equals(p) && user.equals(u) && "DELETED".equals(stat)){
                     txtPW.setText("");
@@ -314,8 +300,10 @@ public class Login extends javax.swing.JFrame {
                 try{
                     PreparedStatement ps;
                     ResultSet rs;
+                    int uID=0;
                     String p=null;
                     String u=null;
+                    String type=null;
                     String stat=null;
 
                     ps = dbu.connectToMySQL().prepareStatement(sqlStmt);
@@ -327,13 +315,28 @@ public class Login extends javax.swing.JFrame {
                         p = rs.getString("password");
                         u = rs.getString("username");
                         stat=rs.getString("status");
+                        type= rs.getString("user_type");
+                        dbu.setUserID(uID=rs.getInt("user_id"));
                     }
-
+                    System.out.println(uID+"");
                     if(pass.equals(p) && user.equals(u) && "OK".equals(stat)){
-                        AdminHomepage h = new AdminHomepage ();
-                        h.setVisible(true);
-                        h.setCenterScreen();
-                        this.dispose();
+                        if(type.equals("Admin")){
+                            AdminHomepage h = new AdminHomepage ();
+                            dbu.setType(type);
+                            h.setVisible(true);
+                            h.setCenterScreen();
+                            h.setName();
+                            this.dispose();
+                        }else if(type.equals("Kitchen Staff")){
+                            dbu.setType(type);
+                            KSHomepage h = new KSHomepage ();
+                            h.setVisible(true);
+                            h.setCenterScreen();
+                            h.setName();
+                            this.dispose();
+                        }else{
+                            
+                        }
                     }else if(pass.equals(p) && user.equals(u) && "DELETED".equals(stat)){
                         txtPW.setText("");
                         txtUsername.setText("");

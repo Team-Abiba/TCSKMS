@@ -13,6 +13,7 @@ import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.Toolkit;
 import login.AdminHomepage;
+import login.KSHomepage;
 /**
  *
  * @author zany
@@ -77,7 +78,7 @@ public class IngredientList extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        fldSearch.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        fldSearch.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         fldSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 fldSearchKeyPressed(evt);
@@ -249,7 +250,7 @@ public class IngredientList extends javax.swing.JFrame {
                     .addComponent(fldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -310,11 +311,28 @@ public class IngredientList extends javax.swing.JFrame {
     }//GEN-LAST:event_fldSearchKeyPressed
 
     private void lblHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomeMouseClicked
-        AdminHomepage bList=new AdminHomepage();
-        bList.setVisible(true);
-        this.dispose();
-        bList.setVisible(true);
-        bList.setCenterScreen();
+        String type;
+        DBUtilities dbu;
+        
+        dbu = new DBUtilities();
+        type = dbu.getType();
+        if(type.equals("Admin")){
+            AdminHomepage h = new AdminHomepage ();
+            dbu.setType(type);
+            h.setVisible(true);
+            h.setCenterScreen();
+            h.setName();
+            this.dispose();
+        }else if(type.equals("Kitchen Staff")){
+            dbu.setType(type);
+            KSHomepage h = new KSHomepage ();
+            h.setVisible(true);
+            h.setCenterScreen();
+            h.setName();
+            this.dispose();
+        }else{
+
+        }
     }//GEN-LAST:event_lblHomeMouseClicked
 
     private void lblAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAddMouseClicked

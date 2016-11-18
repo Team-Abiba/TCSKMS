@@ -11,6 +11,8 @@ import com.ezware.oxbow.swingbits.table.filter.TableRowFilterSupport;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import login.AdminHomepage;
+import db.DBUtilities;
+import login.KSHomepage;
 
 /**
  *
@@ -325,11 +327,28 @@ public class UserList extends javax.swing.JFrame {
     }//GEN-LAST:event_fldSearchKeyPressed
 
     private void lblHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomeMouseClicked
-        AdminHomepage bList=new AdminHomepage();
-        bList.setVisible(true);
-        this.dispose();
-        bList.setVisible(true);
-        bList.setCenterScreen();
+        String type;
+        DBUtilities dbu;
+        
+        dbu = new DBUtilities();
+        type = dbu.getType();
+        if(type.equals("Admin")){
+            AdminHomepage h = new AdminHomepage ();
+            dbu.setType(type);
+            h.setVisible(true);
+            h.setCenterScreen();
+            h.setName();
+            this.dispose();
+        }else if(type.equals("Kitchen Staff")){
+            dbu.setType(type);
+            KSHomepage h = new KSHomepage ();
+            h.setVisible(true);
+            h.setCenterScreen();
+            h.setName();
+            this.dispose();
+        }else{
+
+        }
     }//GEN-LAST:event_lblHomeMouseClicked
 
     private void lblAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAddMouseClicked

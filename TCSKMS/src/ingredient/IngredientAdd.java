@@ -7,7 +7,11 @@ package ingredient;
 
 import db.DBUtilities;
 import javax.swing.*;
+import net.proteanit.sql.DbUtils;
+import javax.swing.table.*;
+import com.ezware.oxbow.swingbits.table.filter.TableRowFilterSupport;
 import java.awt.Dimension;
+import java.awt.Frame;
 import java.awt.Toolkit;
 import static java.lang.System.out;
 import java.sql.PreparedStatement;
@@ -436,7 +440,6 @@ public class IngredientAdd extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         int addIng;
-        Float qty;
         addIng=JOptionPane.showConfirmDialog(null,"Are you sure you want to add this ingredient?", "ADD INGREDIENT",JOptionPane.YES_NO_OPTION);
         IngredientModel p = new IngredientModel();
         
@@ -450,7 +453,7 @@ public class IngredientAdd extends javax.swing.JFrame {
             }else{
               
                 try {
-                    qty = Float.parseFloat(txtQty.getText());
+                    Float qty = Float.parseFloat(txtQty.getText());
                 }catch (NumberFormatException e) {
                     lblQremarks.setText("Value entered not a number!");
                 }try {

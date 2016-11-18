@@ -19,13 +19,13 @@ import jdk.nashorn.internal.codegen.CompilerConstants;
  *
  * @author Carlo
  */
-public class EditNonDish extends javax.swing.JFrame {
+public class NonDishEdit extends javax.swing.JFrame {
 
     /**
      * Creates new form ViewNonDishUI
      */
 
-    public EditNonDish() {
+    public NonDishEdit() {
         initComponents();
     }
     int qty;
@@ -106,7 +106,6 @@ public class EditNonDish extends javax.swing.JFrame {
         btnDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(677, 721));
         setResizable(false);
 
         pnlBody.setBackground(new java.awt.Color(255, 255, 255));
@@ -512,21 +511,23 @@ public class EditNonDish extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EditNonDish.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NonDishEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EditNonDish.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NonDishEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EditNonDish.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NonDishEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EditNonDish.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NonDishEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditNonDish().setVisible(true);
+                new NonDishEdit().setVisible(true);
                 
             }
         });
@@ -534,7 +535,6 @@ public class EditNonDish extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
@@ -544,43 +544,28 @@ public class EditNonDish extends javax.swing.JFrame {
     private javax.swing.JLayeredPane jLayeredPane5;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JLabel lblBrand;
-    private javax.swing.JLabel lblBrand3;
     private javax.swing.JLabel lblCode;
-    private javax.swing.JLabel lblCode3;
     private javax.swing.JLabel lblCopyright;
     private javax.swing.JLabel lblDate;
-    private javax.swing.JLabel lblDate3;
     private javax.swing.JLabel lblNdName;
-    private javax.swing.JLabel lblNdName3;
     private javax.swing.JLabel lblPremarks;
     private javax.swing.JLabel lblPrice;
-    private javax.swing.JLabel lblPrice3;
     private javax.swing.JLabel lblQremarks;
     private javax.swing.JLabel lblQty;
-    private javax.swing.JLabel lblQty3;
     private javax.swing.JLabel lblReq;
     private javax.swing.JLabel lblReq1;
     private javax.swing.JLabel lblReq3;
     private javax.swing.JLabel lblReq4;
     private javax.swing.JLabel lblReq5;
     private javax.swing.JLabel lblSupplier;
-    private javax.swing.JLabel lblSupplier3;
     private javax.swing.JPanel pnlBody;
-    private javax.swing.JPanel pnlBody3;
     private javax.swing.JPanel pnlHeader;
     private javax.swing.JTextField txtfldBrand;
-    private javax.swing.JTextField txtfldBrand3;
     private javax.swing.JTextField txtfldCode;
-    private javax.swing.JTextField txtfldCode3;
     private javax.swing.JTextField txtfldDate;
-    private javax.swing.JTextField txtfldDate3;
     private javax.swing.JTextField txtfldNDName;
-    private javax.swing.JTextField txtfldNDName3;
     private javax.swing.JTextField txtfldPrice;
-    private javax.swing.JTextField txtfldPrice3;
     private javax.swing.JTextField txtfldQty;
-    private javax.swing.JTextField txtfldQty3;
     private javax.swing.JTextField txtfldSupplier;
-    private javax.swing.JTextField txtfldSupplier3;
     // End of variables declaration//GEN-END:variables
 }
