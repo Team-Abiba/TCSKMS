@@ -31,4 +31,17 @@ public class DBUtilities extends Config{
         
         return conn;
     }
+    
+    public ResultSet browse(PreparedStatement pStmt){
+        ResultSet rs;
+        rs = null;
+        
+        try{
+            rs=pStmt.executeQuery();
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return rs;
+    
+    }
 }

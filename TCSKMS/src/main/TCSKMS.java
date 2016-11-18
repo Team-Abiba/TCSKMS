@@ -22,9 +22,10 @@ public class TCSKMS {
      */
     public static void main(String[] args) {
         try{
-            ServerSocket socket = new ServerSocket(9999, 10, InetAddress.getLocalHost());
+            ServerSocket socket = new ServerSocket(7777, 10, InetAddress.getLocalHost());
             NonDishList ndList = new NonDishList();
             ndList.loadNonDishToJTable();
+            ndList.setCenterScreen();
             ndList.setVisible(true);
         }catch(java.net.BindException b){
             JOptionPane.showMessageDialog(null,"Application is already running...");
