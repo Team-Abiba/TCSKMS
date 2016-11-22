@@ -10,6 +10,7 @@ import net.proteanit.sql.DbUtils;
 import javax.swing.table.*;
 import com.ezware.oxbow.swingbits.table.filter.TableRowFilterSupport;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Toolkit;
 import login.AdminHomepage;
@@ -34,7 +35,9 @@ public class IngredientList extends javax.swing.JFrame {
         db = new  IngredientModel();
         this.getTable().setModel(DbUtils.resultSetToTableModel(db.loadIngredient()));
         this.getTable().getTableHeader().setReorderingAllowed(false);
-        
+        this.getTable().setFont(new Font("Tahoma",Font.PLAIN, 14));
+        this.getTable().getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 18));
+        this.getTable().setRowHeight(50);
         TableRowFilterSupport.forTable(this.getTable())
         .searchable(true)
         .apply();

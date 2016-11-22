@@ -12,6 +12,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import login.AdminHomepage;
 import db.DBUtilities;
+import java.awt.Font;
 import login.KSHomepage;
 
 /**
@@ -36,7 +37,9 @@ public class UserList extends javax.swing.JFrame {
         um = new UserModel();
         this.getTable().setModel(DbUtils.resultSetToTableModel(um.loadUser()));
         this.getTable().getTableHeader().setReorderingAllowed(false);
-        
+        this.getTable().setFont(new Font("Tahoma",Font.PLAIN, 14));
+        this.getTable().getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 18));
+        this.getTable().setRowHeight(50);
         TableRowFilterSupport.forTable(this.getTable())
         .searchable(true)
         .apply();
