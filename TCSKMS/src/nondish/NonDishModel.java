@@ -169,7 +169,7 @@ public class NonDishModel {
             conn = dbu.connectToMySQL();//DriverManager.getConnection(url,"root","");
             System.out.println("DB Connected");
             query = "select nondish_id AS CodeNum, nondish_name AS Name, brand_name AS BrandName,price AS Price,qty AS Quantity,"
-                    + "supplier AS Supplier,date_time_edited AS Date from nondish where status = 'OK'";
+                    + "supplier AS Supplier,date_time_edited AS Date from nondish where status = 'OK' LIMIT 10 OFFSET 0";
             loadAllNonDish = conn.createStatement();
             rs= loadAllNonDish.executeQuery(query);
             
@@ -239,5 +239,57 @@ public class NonDishModel {
             System.out.println(e.getMessage());
         }
         return returnedRow;
+    }
+    
+    public ResultSet loadTenNonDish(int os){
+        ResultSet rs = null;
+        Statement loadAllNonDish;
+        String query;
+        
+        try{
+            dbu = new DBUtilities();
+            conn = dbu.connectToMySQL();//DriverManager.getConnection(url,"root","");
+            System.out.println("DB Connected");
+            query = "select nondish_id AS CodeNum, nondish_name AS Name, brand_name AS BrandName,price AS Price,qty AS Quantity,"
+                    + "supplier AS Supplier,date_time_edited AS Date from nondish where status = 'OK' LIMIT 10 OFFSET "+os;
+            loadAllNonDish = conn.createStatement();
+            rs= loadAllNonDish.executeQuery(query);
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+            System.out.println(e.getMessage());
+            
+        }
+        
+    return rs;  
+    }
+    
+    public int checkHaveResult(int os){
+        int returnedRow = 0;
+        boolean rsCheck;
+        ResultSet rs;
+        Statement loadAllNonDish;
+        String query;
+        
+        try{
+            dbu = new DBUtilities();
+            conn = dbu.connectToMySQL();//DriverManager.getConnection(url,"root","");
+            System.out.println("DB Connected");
+            query = "select * from nondish where status = 'OK' LIMIT 10 OFFSET "+os;
+            loadAllNonDish = conn.createStatement();
+            rs = loadAllNonDish.executeQuery(query);
+            rsCheck = rs.next();
+            
+            if(rsCheck == true){
+                returnedRow = 1;
+            }else{
+                returnedRow = 0;
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+            System.out.println(e.getMessage());  
+        }
+        
+    return returnedRow;  
     }
 }

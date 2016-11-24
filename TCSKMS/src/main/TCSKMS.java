@@ -7,12 +7,13 @@ package main;
 
 import java.net.InetAddress;
 import java.net.ServerSocket;
+import javafx.scene.input.KeyCode;
 import javax.swing.JOptionPane;
-import login.Login;
+import nondish.*;
 
 /**
  *
- * @author zerimar
+ * @author Carlo
  */
 public class TCSKMS {
 
@@ -20,14 +21,14 @@ public class TCSKMS {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-         try{
-            ServerSocket socket = new ServerSocket(9999, 10, InetAddress.getLocalHost());
-            Login l = new Login();
-            l.setCenterScreen();
-            l.setVisible(true);
+        try{
+            ServerSocket socket = new ServerSocket(7777, 10, InetAddress.getLocalHost());
+            NonDishList ndList = new NonDishList();
+            ndList.loadNonDishToJTable();
+            ndList.setCenterScreen();
+            ndList.setVisible(true);
         }catch(java.net.BindException b){
             JOptionPane.showMessageDialog(null,"Application is already running...");
-            System.exit(1);
         }catch(Exception e){
             System.out.println(e.toString());
         }

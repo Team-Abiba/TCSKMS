@@ -10,7 +10,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import java.sql.Statement;
 
 /**
  *
@@ -18,8 +18,6 @@ import java.sql.SQLException;
  */
 public class DBUtilities extends Config{
     static Connection conn;
-    static int userID;
-    static String type;
     
     //MySQL connection
     public Connection connectToMySQL(){
@@ -34,23 +32,6 @@ public class DBUtilities extends Config{
         return conn;
     }
     
-    
-    public int getUserID() {
-        return userID;
-    }
-    
-    public void setUserID(int uID) {
-        userID = uID;
-    }
-    public String getType() {
-        return type;
-    }
-    
-    public void setType(String s) {
-        type = s;
-    }
-    
-    //login browse
     public ResultSet browse(PreparedStatement pStmt){
         ResultSet rs;
         rs = null;
@@ -63,7 +44,4 @@ public class DBUtilities extends Config{
         return rs;
     
     }
-    
-   
-    
 }
